@@ -19,13 +19,13 @@
 ClassList["shadow hunter"] = {
 	regExpSearch : /^(?=.*shadow)(?=.*hunter).*$/i,
 	name : "Shadow Hunter",
-	source : ["HB"],
+	source : ["HB", 0],
 	primaryAbility : "\n \u2022 Shadow Hunter: Strength or Dexterity;",
-	prereqs : "\n \u2022 Blood Hunter: Strength 13 or Dexterity 13;",
+	prereqs : "\n \u2022 Shadow Hunter: Strength 13 or Dexterity 13;",
 	die : 8,
 	improvements : [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5],
 	saves : ["Dex", "Cha"],
-	skills : ["\n\n" + toUni("Blood Hunter") + ": Choose 3 from Deception, Persuasion, Perception, Stealth, Acrobatics, Sleight of Hand, and Intimidation."],
+	skills : ["\n\n" + toUni("Shadow Hunter") + ": Choose 3 from Deception, Persuasion, Perception, Stealth, Acrobatics, Sleight of Hand, and Intimidation."],
 	tools : ["Thieves Tools", "Thieves Tools"],
 	armor : [
 		[true, false, false, false],
@@ -35,7 +35,7 @@ ClassList["shadow hunter"] = {
 		[true, true],
 		[true, true]
 	],
-	equipment : "Blood Hunter starting equipment:\n \u2022 leather armor;\n \u2022 A martial weapon -or- two simple weapons;\n \u2022 A longbow and 20 arrows -or- 2 daggers;\n \u2022 A cloak with hood;\n \u2022 An burglar's pack.\n\nAlternatively, choose 4d4 \xD7 10 gp worth of starting equipment instead of both the class' and the background's starting equipment.",
+	equipment : "Shadow Hunter starting equipment:\n \u2022 leather armor;\n \u2022 A martial weapon -or- two simple weapons;\n \u2022 A longbow and 20 arrows -or- 2 daggers;\n \u2022 A cloak with hood;\n \u2022 An burglar's pack -or- .\n\nAlternatively, choose 4d4 \xD7 10 gp worth of starting equipment instead of both the class' and the background's starting equipment.",
 	subclasses : ["Shadow Hunter Archytpes", ["black mage", "Shadow Assassin"]],
 	attacks : [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3],
 	spellcastingFactor : 1,
@@ -58,8 +58,8 @@ ClassList["shadow hunter"] = {
 		},
 		"fighting style" : {
 			name : "Fighting Style",
-			source : ["MM:BH", 3],
-			minlevel : 2,
+			source : ["HB"],
+			minlevel : 1,
 			description : "\n   " + "Choose a Fighting Style using the \"Choose Feature\" button above",
 			choices : ["Defense", "Dueling", "Two-Weapon Fighting"],
 			"defense" : {
@@ -93,7 +93,7 @@ ClassList["shadow hunter"] = {
 		"sneak attack" : {
 				name : "Sneak Attack",
 				source : ["P", 96],
-				minlevel : 1,
+				minlevel : 2,
 				description : "\n   " + "Once per turn, I can add damage to finesse/ranged attack if I have adv." + "\n   " + "I don't need adv. if a conscious ally is within 5 ft of the target and I don't have disadv.",
 				additional : levels.map(function (n) {
 					return Math.ceil(n / 2) + "d6";
@@ -127,8 +127,9 @@ ClassList["shadow hunter"] = {
 					selection : ["minor illusion"],
 					atwill : true
 				},
+			},
 				extraname : "Spreading Darkness",
-				eval : "ClassFeatureOptions([\"shadow hunter\", \"feature\", \"darkness\", \"extra\"]); ClassFeatureOptions([\"shadow hunter\", \"feature\", \"darkvision\", \"extra\"])
+				eval : "ClassFeatureOptions([\"shadow hunter\", \"feature\", \"darkness\", \"extra\"]); ClassFeatureOptions([\"shadow hunter\", \"feature\", \"darkvision\", \"extra\"])",
 				"darkness" : {
 					name : "Darkness",
 					source : ["P", 80],
@@ -144,7 +145,7 @@ ClassList["shadow hunter"] = {
 				},
 				"darkvision" : {
 					name : "Darkvision",
-					source : ["P", 80],
+					source : ["HB"],
 					description : "\n   " + "As an action, I can cast Darkvision at the lowest level without using components or spell slots once each until you have a long rest",
 					action : ["action", ""],
 					spellcastingBonus : {
@@ -237,7 +238,7 @@ ClassSubList["shadow assassin"] = {
 			name : "Shadow Man",
 			source : ["HB"],
 			minlevel : 3,
-			description : "\n   " + "Starting at level 3 You learn the spells "Silence" and "Alter self", and can cast them at their lowest level once each without expending a spell slot or, using material components.",
+			description : "\n   " + "Starting at level 3 You learn the spells Silence and Alter self, and can cast them at their lowest level once each without expending a spell slot or, using material components.",
 			usage : 1,
 			recovery : "short rest",
 				"silence" : {
@@ -252,8 +253,7 @@ ClassSubList["shadow assassin"] = {
 						firstCol : 2
 					},
 					spellFirstColTitle : "spreading darkness",
-			
-		},
+				},
 				"alterself" : {
 					name : "Alter Self",
 					description : "\n   " + "I can cast Alter Self on myself at will, without using spell slots (PHB 211)",
@@ -264,6 +264,7 @@ ClassSubList["shadow assassin"] = {
 						selection : ["alter self"],
 						atwill : true,
 					},
+				},
 		},
 		"subclassfeature3.2" : {
 			name : "Breaking Darkness",
