@@ -12,6 +12,7 @@
 	Effect:		This script adds a class called "Shadow Hunter" (v1) and the two subclasses for it: "Black Mage", and "Shadow Assassin"
 				
 	Code by:	Raymond Perez & MorePurpleMoreBetter
+	Class Created by: anonymous at https://www.dandwiki.com/wiki/Shadow_Hunter_(5e_Class)
 	Date:		2017-03-27 (sheet v12.87)
 
 */
@@ -19,7 +20,7 @@
 ClassList["shadow hunter"] = {
 	regExpSearch : /^(?=.*shadow)(?=.*hunter).*$/i,
 	name : "Shadow Hunter",
-	source : ["HB", 0],
+	source : ["HB"],
 	primaryAbility : "\n \u2022 Shadow Hunter: Strength or Dexterity;",
 	prereqs : "\n \u2022 Shadow Hunter: Strength 13 or Dexterity 13;",
 	die : 8,
@@ -104,7 +105,7 @@ ClassList["shadow hunter"] = {
 			},
 		"spellcasting" : {
 				name : "Spellcasting",
-				source : ["P", 101],
+				source : ["HB"],
 				minlevel : 2,
 				description : "\n   " + "I can cast sorcerer spells that I know, using Charisma as my spellcasting ability",
 				additional : ["0 cantrips \u0026 0 spells known", "0 cantrips \u0026 2 spells known", "0 cantrips \u0026 3 spells known", "0 cantrips \u0026 3 spells known", "0 cantrips \u0026 4 spells known", "0 cantrips \u0026 6 spells known", "0 cantrips \u0026 7 spells known", "0 cantrips \u0026 7 spells known", "0 cantrips \u0026 9 spells known", "0 cantrips \u0026 9 spells known", "0 cantrips \u0026 10 spells known", "0 cantrips \u0026 10 spells known", "0 cantrips \u0026 11 spells known", "0 cantrips \u0026 11 spells known", "0 cantrips \u0026 12 spells known", "0 cantrips \u0026 12 spells known", "0 cantrips \u0026 14 spells known", "0 cantrips \u0026 14 spells known", "0 cantrips \u0026 15 spells known", "0 cantrips \u0026 15 spells known"],
@@ -203,7 +204,7 @@ ClassSubList["black mage"] = {
 		},
 		"subclassfeature9" : {
 			name : "Shadow Syphon",
-			source : ["MM:BH", 5],
+			source : ["HB"],
 			minlevel : 11,
 			description : "\n   " + "When I kill a creature with +CR1 with an attack they must make a charisma saving throw against your spell save DC, on a fail I gain a temporary spell slot",
 			usages : 1,
