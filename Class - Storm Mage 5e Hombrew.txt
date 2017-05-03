@@ -1,0 +1,177 @@
+/*	-WHAT IS THIS?-
+	The script featured here is made as an optional addition to "MPMB's Character Record Sheet" found at http://flapkan.com/mpmb/dmsguild
+	You can add the content to the Character Sheet's functionality by adding the script below in the "Add Custom Script" dialogue.
+
+	-KEEP IN MIND-
+	Note that you can add as many custom codes as you want, but you have to add the code in at once (i.e. copy all the code into a single, long file and copy that into the sheet).
+	It is recommended to enter the code in a fresh sheet before adding any other information.
+*/
+
+/*	-INFORMATION-
+	Subject:	Class
+	Effect:		This script adds a class called "Storm Mage" (v1). 
+				
+	Code by:	Raymond Perez & MorePurpleMoreBetter
+	Class Created by: anonymous at https://www.dandwiki.com/wiki/Storm_Mage_(5e_Class)
+	Date:		2017-05-02 (sheet v12.97)
+
+*/
+
+ClassList["storm mage"] = { 
+	
+	regExpSearch : /^(?=.*storm).*$/i, 
+	
+	name : "Storm Mage", 
+	
+	source : ["HB", 0], 
+	
+	primaryAbility : "\n \u2022 storm mage: Charisma;", 
+	
+	prereqs : "\n \u2022 storm mage: Charisma 13;", 
+	
+	die : 8, 
+	
+	improvements : [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5], 
+	
+	saves : ["Cha", "Dex"], 
+	
+	skills : ["\n\n" + toUni("Storm Mage") + ": Take Arcana and Choose two from Acrobatics, Athletics, History, Deception, Intimidation, Persuasion."], 
+	
+	armor : [ 
+		[true, true, false, true], 
+		[true, true, false, true] 
+	],
+	
+	weapons : [ 
+		[true, true], 
+		[false, true] 
+	],
+	
+	equipment : "Storm Mage starting equipment:\n \u2022 leather armor;\n \u2022 A martial weapon and shield -or- two martial weapons;\n \u2022 longbow and 20 arrows -or- Heavy crossbow and 20 bolts.", 
+	
+	subclasses : ["", ["", ""]], 
+	
+	attacks : [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2], 
+	
+	abilitySave : 6, 
+	
+	abilitySaveAlt : 5, 
+	
+	spellcastingFactor : 1, 
+		
+		spellcastingKnown : { 
+			cantrips : [3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 6, 6], 
+			spells : [4, 5, 6, 7, 8, 9, 10, 11, 12, 12, 13, 13, 13, 13, 14, 14, 15, 16, 16, 16],		
+	},
+	spellcastingList : { 	
+		class : "wizard", 
+		
+		level : [0, 9],
+	},
+	
+	features : { 
+	
+		
+		"spellcasting" : {
+			name : "Spellcasting",
+			source : ["HB"],
+			minlevel : 1,
+			description : "\n   " + "I have access to wizard spells. " + "\n   " + "Charisma is your spellcasting ability for your storm mage spells; You use your Charisma whenever a spell refers to your spellcasting ability. In addition, you use your Charisma modifier when setting the saving throw DC for a storm mage spell you cast and when making an attack roll with one. Spell save DC = 8 + your proficiency bonus + your Charisma modifier Spell attack modifier.",
+			additional : ["4 cantrips \u0026 2 spells known", "4 cantrips \u0026 3 spells known", "4 cantrips \u0026 4 spells known", "5 cantrips \u0026 5 spells known", "5 cantrips \u0026 6 spells known", "5 cantrips \u0026 7 spells known", "5 cantrips \u0026 8 spells known", "5 cantrips \u0026 9 spells known", "5 cantrips \u0026 10 spells known", "6 cantrips \u0026 10 spells known", "6 cantrips \u0026 11 spells known", "6 cantrips \u0026 11 spells known", "6 cantrips \u0026 12 spells known", "6 cantrips \u0026 12 spells known", "6 cantrips \u0026 13 spells known", "6 cantrips \u0026 13 spells known", "6 cantrips \u0026 14 spells known", "6 cantrips \u0026 14 spells known", "6 cantrips \u0026 15 spells known", "6 cantrips \u0026 15 spells known"],
+    		},
+		"weapon bond" : { 
+			name : "Weapon Bond",
+			source : ["HB"],
+			minlevel : 1,
+			description : "\n   " + "Any weapon you have proficiency can be used as your spellcasting focus if you meditate with it for 1 hour. You can have a maximum amount of weapon bonds equal to your Charisma modifier (minimum of 1). In addition, you can provide the somatic component of spells with your weapon. In order to disband a weapon you have bonded with, you must spend 8 consecutive hours with the weapon that is replacing the current blade. Also, you can’t be disarmed of that weapon unless you are incapacitated. If it is on the same plane of existence,you can summon that weapon as a bonus action on your turn, causing it to teleport instantly to your hand.",
+  		},
+		"tempest tendency" : { 
+			name : "Tempest Tendency",
+			source : ["HB"],
+			minlevel : 1,
+			description : "\n   " + "The power of the storm dwells and fester within your soul, granting you abilities that affect your daily life and interactions. You obtain the Gust and Thaumaturgy cantrips.",
+  			},
+			"gust" : {
+				name : "Gust",
+				minlevel : 1,
+				tooltip : " (Tempest Tendency)",
+				action : ["action", ""],
+				spellcastingBonus : {
+					name : "Temepest Tendency (level 1)",
+					spells : ["gust"],
+					selection : ["gust"],
+					oncelr : true,
+				},
+			},
+			"thaumaturgy" : {
+				name : "Thaumaturgy",
+				minlevel : 1,
+				tooltip : " (Tempest Tendency)",
+				action : ["action", ""],
+				spellcastingBonus : {
+					name : "tempest Tendency (level 1)",
+					spells : ["thaumaturgy"],
+					selection : ["thaumaturgy"],
+					oncelr : true,
+			},
+		},
+		"wrath of the storm" : { 
+			name : "Wrath of the Storm",
+			source : ["HB"],
+			minlevel : 1,
+			description : "\n   " + "Also at 1st level, you can thunderously rebuke attackers. When a creature within 60 feet of you that you can see hits you with an attack, you can use your reaction to cause the creature to make a Dexterity saving throw. The creature takes 1d10 lightning or thunder damage (your choice) on a failed saving throw, and half as much damage on a successful one.; Wrath of the Storm Damage increases to 2d10 at level 5, 3d10 at level 7, and 5d10 at level 15.",
+  		},
+		"weapon magic" : { 
+			name : "Weapon Magic",
+			source : ["HB"],
+			minlevel : 2,
+			description : "\n   " + "you can channel your spells through your weapons. You can charge your weapon with a spell as a bonus action with arcane energy. When you attack, you only make a single attack with your charged blade. After the attack resolves, it releases the spell that was cast upon it.; You may only use this feature with Evocation spells that do not require concentration.",
+  		},
+		"storm protection" : { 
+			name : "Storm Protection",
+			source : ["HB"],
+			minlevel : 2,
+			description : "\n   " + "A gust of Wind surrounds you. Your AC increases by +2",
+  		},
+		"storm strike" : { 
+			name : "Storm Strike",
+			source : ["HB"],
+			minlevel : 3,
+			description : "\n   " + "Beginning at 3rd level, your weapon glows with magical energy while it is charged with a spell. While charged, it deals an additional d6 of relevant spell damage and your weapon becomes magical for the purpose of overcoming resistance. The damage increases to a d8 at 6th level, and to a d10 at 9th level, and d12 at 13th level.",
+		},
+		
+		"call of the elemental plane" : {
+			name : "Call of the Elemental Plane",
+			source : ["HB", 0],
+			minlevel : 10,
+			description : "\n   " + "At 10th level, you become a conduit to the Plane of Air itself, granting primordial power. You are now resistant to lightning and thunder damage as well as being immune to the deafened condition due to becoming accustomed to the ever present raging thunder.",
+		},
+		"lightning storm" : { 
+			name : "Lightning Storm",
+			source : ["HB", 0],
+			minlevel : 17,
+			description : "\n   " + "At Level 17, you can use an action to unleash chain lightning following the standard rules for it.",
+    		},
+			"chain lightning" : {
+				name : "chain lightning",
+				minlevel : 17,
+				tooltip : " (Lightning Storm)",
+				action : ["action", ""],
+				spellcastingBonus : {
+					name : "Lightning Storm (level 17)",
+					spells : ["chain lightning"],
+					selection : ["chain lighting"],
+					oncelr : true,
+				},
+			},
+		"lord of the storm" : { 
+			name : "Lord of the Storm",
+			source : ["HB", 0],
+			minlevel : 20,
+			description : "\n   " + "You become empowered by the speed and ferocity of a fierce storm, lightning crackling from your body for the duration of your transformation. Lightning enhances your reflexes and speed. You move at double normal speed and cannot be knocked prone / forced movement short of death. Missile weapons fired at you are deflected harmlessly, and your AC is increased by 4 to reflect your increased speed. You also gain advantage on dexterity saving throws for the duration of this ability. You may use a bonus action to turn into a lightning bolt, moving instantaneously in a straight line up to 100 feet away. Creatures in the path are treated as having been hit by a lightning bolt spell. Finally, attacks dealing lightning or thunder damage also deal an additional 5d10 points of lightning damage. Last 1 Minute.",
+    			recovery : "long rest",
+			action : ["action", ""],
+			usages : [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], //example of usages varying per level
+   		},
+    	},
+};

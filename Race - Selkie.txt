@@ -1,0 +1,59 @@
+/*	-WHAT IS THIS?-
+	The script featured here is an explanation of how to make your own custom addition to MPMB's D&D 5e Character Tools.
+	You can add custom content to the Character Sheet's functionality by adding a script written with the syntax shown below in the "Add Custom Script" dialogue.
+	
+	-KEEP IN MIND-
+	Note that you can add as many custom codes as you want, but you have to add the code in at once (i.e. copy all the code into a single, long file and copy that into the sheet).
+	It is recommended to enter the code in a fresh sheet before adding any other information.
+*/
+
+/*	-INFORMATION-
+	Subject:	Class
+	Effect:		This is the syntax for adding Selkie race to the sheet
+				Note that you will need to define the race once for every sub-race (i.e. there is a separate entry for High Elf, Wood Elf, and Dark Elf)
+				For races that have variants, like the human, you can define a variant using the RaceSubList. Any variant defined like that will only be selectable through the "Racial Options" button
+	Race Created by: anonymous at https://www.dandwiki.com/wiki/Selkie_(5e_Race)
+	Sheet:		v12.83 (2017-02-18)
+*/
+
+RaceList["selkie"] = { 
+
+	regExpSearch : /^(?=.*selkie).*$/i,
+
+	name : "Selkie",
+
+	source : ["HB", 0],
+
+	plural : "Selkie",
+
+	size : 3,
+
+	speed : [30, 20],
+
+	languages : ["Common", "Aquan"],
+
+	vision : "Darkvision 60 ft",
+
+	dmgres : ["necrotic", "radiant"],
+
+	savetxt : "Adv. vs. cold enviornment; constitution saves to resist cold environment",
+
+	weaponprofs : [false, false, ["",""]],
+
+	skills : ["Athletics"],
+
+	age : " reach adulthood in their early teens and live around 70 years",
+
+	height : " range from 5 to over 6 feet tall (4'10\" + 2d8\")",
+
+	weight : " weigh around 120 lb (100 + 2d8 \xD7 2d4 lb)",
+
+	improvements : "Selkie: +2 Charisma, +1 Wisdom;",
+
+	scores : [0, 0, 0, 0, 1, 2],
+
+	trait : "Selkie (+2 Charisma, +1 Wisdom)\nAquatic Species:\n    You have advantage on athletics and acrobatics checks made in water and you can take the dash action while swimming.\nSeal Anatomy:\n You are vulnerable to hot climates and become thirsty twice as fast, you have disadvantage on constitution saves in hot climates, and you become thirsty in half the required time for an human. However you gain advantage on constitution saves to resist cold environment. You become proficient in athletics.\nSeal Lungs:\n You can hold your breath for 4x your constitution score.\nSelkie Druid:\n Selkie druids can only wild shape into an aquatic creature, however they can wild shape one more time per day.", 
+
+};
+
+UpdateDropdown("race"); //Optional; This updates all race dropdown fields (both on first page and companion pages)

@@ -1,0 +1,259 @@
+/*	-WHAT IS THIS?-
+	The script featured here is made as an optional addition to "MPMB's Character Record Sheet" found at http://flapkan.com/mpmb/dmsguild
+	You can add the content to the Character Sheet's functionality by adding the script below in the "Add Custom Script" dialogue.
+
+	-KEEP IN MIND-
+	Note that you can add as many custom codes as you want, but you have to add the code in at once (i.e. copy all the code into a single, long file and copy that into the sheet).
+	It is recommended to enter the code in a fresh sheet before adding any other information.
+*/
+
+/*	-INFORMATION-
+	Subject:	Class
+	Effect:		This script adds a class called "Healer" (v1)
+
+	Code by:	Raymond Perez & MorePurpleMoreBetter
+	Class Created by: anonymous at https://www.dandwiki.com/wiki/Healer_(5e_Class)
+	Date:		2017-05-02 (sheet v12.97)
+
+*/
+
+ClassList["healer"] = { 
+	
+	regExpSearch : /^(?=.*healer).*$/i, 
+	
+	name : "Healer", 
+	
+	source : ["HB", 0], 
+	
+	primaryAbility : "\n \u2022 healer: Charisma;", 
+	
+	prereqs : "\n \u2022 storyteller: Charisma 13;", 
+	
+	die : 8, 
+	
+	improvements : [0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5], 
+	
+	saves : ["Con", "Wis"], 
+	
+	skills : ["\n\n" + toUni("Healer") + ": Choose two from Persuasion, Animal Handling, Medicine, Nature, Religion, Surivival."], 
+	
+	tools : ["Herbalism kit", "Healer Kit"], 
+	
+	armor : [ 
+		[true, false, false, false], 
+		[false, false, false, false] 
+	],
+	
+	weapons : [ 
+		[true, false], 
+		[true, false] 
+	],
+	
+	equipment : "Healer starting equipment:\n \u2022 Spear -or- Ligth crossbow and 20 bolts;\n \u2022 Herbalism kit -or- Healers kit;\n \u2022 Leather armor -or- Hide Armor;\n\nAlternatively, choose 4d4 \xD7 10 gp and A Prayer book", 
+	
+	subclasses : ["", ["", ""]], 
+	
+	attacks : [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3], 
+	
+	abilitySave : 3, 
+	
+	abilitySaveAlt : 5, 
+	
+	spellcastingFactor : 1, 
+		
+		spellcastingKnown : { 
+			cantrips : [3, 3, 3, 4, 4, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5], 
+			spells : [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],		
+	},
+	spellcastingList : { 	
+		class : "cleric", 
+		
+		level : [0, 9],
+	},
+	
+	features : { 
+	
+		"spellcasting" : {
+			name : "Spellcasting",
+			source : ["HB"],
+			minlevel : 1,
+			description : "\n   " + "I have access to Cleric spells. " + "\n   " + "Charisma is your spellcasting ability for your Healer spells, Spell save DC = 8 + your proficiency bonus + your Charisma modifier Healer have no Spell attack modifier as they can not choose spells that do damage.",
+			additional : ["3 cantrips \u0026 2 spells known", "3 cantrips \u0026 2 spells known", "3 cantrips \u0026 3 spells known", "4 cantrips \u0026 4 spells known", "4 cantrips \u0026 5 spells known", "4 cantrips \u0026 6 spells known", "4 cantrips \u0026 7 spells known", "4 cantrips \u0026 8 spells known", "4 cantrips \u0026 9 spells known", "5 cantrips \u0026 10 spells known", "5 cantrips \u0026 11 spells known", "5 cantrips \u0026 12 spells known", "5 cantrips \u0026 14 spells known", "5 cantrips \u0026 14 spells known", "5 cantrips \u0026 15 spells known", "5 cantrips \u0026 16 spells known", "5 cantrips \u0026 17 spells known", "5 cantrips \u0026 18 spells known", "5 cantrips \u0026 19 spells known", "5 cantrips \u0026 20 spells known"],
+		},
+		"devoted healer" : { 
+			name : "Devoted Healer",
+			source : ["HB"],
+			minlevel : 1,
+			description : "\n   " + "At 1st level, a Healer takes the Oath of Vulnerability. This Oath requires them to be prone to the possibility of injury themselves to more fully empathize with those in their care in doing so by not wearing metal armor or using a shield. A Healer who uses metal armor or shields, even if proficient, is unable to cast spells granted by the Spellcasting feature or spell-like abilities of the Healer Class until the have taken a long rest after the all the metal armor and/or shield is taken off. There is no penalty using a simple weapon of metal. As Part of a Healer's Vow, they are forbidden from attempting to kill a foe, even in self defense. They may however, choose to inflict nonlethal damage if forced to defend themselves. They are idealists whom happen to be ill prepared for the perils of combat.",
+  		},
+		"healing hands" : {
+			name : "Healing Hands",
+			source : ["HB", 0],
+			minlevel : 1,
+			description : "\n   " + "At 1st level, a Healer gains the ability to cast cure wounds at 1st level, without using a spell slot, once per short or long rest.",
+		},
+			"cure wounds" : {
+				name : "cure wounds",
+				minlevel : 1,
+				tooltip : " (Healing Hands)",
+				action : ["action", ""],
+				spellcastingBonus : {
+					name : "Healing Hands (level 1)",
+					spells : ["cure wounds"],
+					selection : ["cure wounds"],
+					oncelr : true,
+			},
+		},
+		"atonement" : { 
+			name : "Atonement",
+			source : ["HB", 0],
+			minlevel : 1,
+			description : "\n   " + "If a Healer refuses to heal an ally, an innocent bystander or a good aligned creature, or allows an ally, to die from a means they could have easily fixed or countered, or inflicts a killing blow on any creature, the Healer looses all spellcasting and spell-like abilities until they atone. A Healer atones in a similar manner as a cleric or paladin does by needing to complete a spiritual quest. This quest is determine by the DM, and for the duration of the quest as long as it is being actively pursued with no delay, a Healer has access to spells of 3rd level or lower.",
+    		},
+		"naturally gifted" : { 
+			name : "Naturally Gifted",
+			source : ["HB", 0],
+			minlevel : 2,
+			description : "\n   " + "Beginning at 2nd level, a Healer can use an action to expend one use of a healer’s kit to tend to a creature and restore 1d6 + Healer level hit points to it, plus additional hit points equal to the creature’s maximum number of Hit Dice. The creature can’t regain hit points from this feature again until it finishes a short or long rest. Healer’s also have double proficiency on Wisdom (Medicine) skill checks, if already proficient. If the Healer does not have proficiency in Medicine, they get it from this feature. In addition, Healer's gain 2 extra hit points per Healer level.",
+   		},
+		"curative touch" : { 
+			name : "Curative Touch",
+			source : ["HB", 0],
+			minlevel : 3,
+			description : "\n   " + "Starting at 3rd level, a healer’s mere touch can heal ailments. When you cast any spell with a range of touch from the Healer Spellcasting feature, in addition to what it normally does when cast, removes 1 effect causing any of the following conditions: blinded, deafened, diseased, fear, paralyzed, or poisoned.",
+    		},
+		"graceful voice" : { 
+			name : "Graceful Voice",
+			source : ["HB", 0],
+			minlevel : 5,
+			description : "\n   " + "At 5th level, a healer’s voice becomes soothing to the listener. A healer can use their bonus action to cast healing word a number of times equal to their Healer level per short or long rest.",
+
+    		},
+			"healing word" : {
+				name : "healing word",
+				minlevel : 5,
+				tooltip : " (Graceful Voice)",
+				action : ["action", ""],
+				spellcastingBonus : {
+					name : "Graceful Voice (level 1)",
+					spells : ["healing word"],
+					selection : ["healing word"],
+					oncelr : true,
+			},
+		},
+		"blessed touch" : { 
+			name : "Blessed Touch",
+			source : ["HB", 0],
+			minlevel : 6,
+			description : "\n   " + "At 6th level, a healer’s touch can not only heal a target but restore them. Healers can cast lesser restoration at will. Healers can also cast cure wounds at 1st level without expending a spell slot a number of times equal to their Healer level per long rest.",
+		},
+			"lesser restoration" : {
+				name : "Lesser Restoration",
+				minlevel : 5,
+				tooltip : " (Blessed Touch)",
+				action : ["action", ""],
+				spellcastingBonus : {
+					name : "Blessed Touch (level 1)",
+					spells : ["lesser restoration"],
+					selection : ["lesser restoration"],
+					oncelr : true,
+			},
+		},
+
+		"effortless healing" : { 
+			name : "Effortless Healing",
+			source : ["HB", 0],
+			minlevel : 7,
+			description : "\n   " + "At 7th level, a healer throws themselves to an ally in an effort to heal them with no thought of their personal safety. When moving to reach an ally to cast a spell granted by the Spellcasting feature or using a spell-like ability from this class as part of the same turn, you do not provoke attacks of opportunity.",
+		},
+		"celectial companion" : { 
+			name : "Celestial Companion",
+			source : ["HB", 0],
+			minlevel : 8,
+			description : "\n   " + "When a healer attains 8th level, the deities recognize them for their devotion and grant them a celestial unicorn companion as their mount and aid. The unicorn is a symbol of healing and purity which serves the healer willingly and unswervingly.",
+    			recovery : "long rest",
+		},
+		"beacon of life" : { 
+			name : "Beacon of Life",
+			source : ["HB", 0],
+			minlevel : 9,
+			description : "\n   " + "At 9th level, you and up to Charisma modifier allies within a 30ft radius of you are under the effect of the spell beacon of hope. A creature that is not on the same plane as you cannot benefit from this feature. This feature only remains active if you follow the rules detailed in the Devoted Healer class feature.",
+		},
+		"cleansed spirit" : { 
+			name : "Cleansed Spirit",
+			source : ["HB", 0],
+			minlevel : 11,
+			description : "\n   " + "At 11th level, you can cast greater restoration without expending a spell slot once per long rest.",
+		},
+
+			"greater restoration" : {
+				name : "Greater Restoration",
+				minlevel :11,
+				tooltip : " (Cleansed Spirit)",
+				action : ["action", ""],
+				recovery : "long rest",
+				spellcastingBonus : {
+					name : "Cleansed Spirit (level 11)",
+					spells : ["greater restoration"],
+					selection : ["greater restoration"],
+					oncelr : true,
+			},
+		},
+		"heavenly voice" : { 
+			name : "Heavenly Voice",
+			source : ["HB", 0],
+			minlevel : 14,
+			description : "\n   " + "At 14th level, you can cast mass healing word without expending a spell slot once per long rest.",
+		},
+			"mass healing word" : {
+				name : "Mass Healing Word",
+				minlevel : 14,
+				tooltip : " (Heavenly Voice)",
+				action : ["action", ""],
+				recovery : "long rest",
+				spellcastingBonus : {
+					name : "Heavenly Voice (level 14)",
+					spells : ["mass healing word"],
+					selection : ["mass healing word"],
+					oncelr : true,
+			},
+		},
+		"new limb" : { 
+			name : "New Limb",
+			source : ["HB", 0],
+			minlevel : 17,
+			description : "\n   " + "At 17th level, the healer can cast regenerate to restore a lost or damaged body part once per long rest.",
+		},
+			"regenerate" : {
+				name : "regenerate",
+				minlevel : 17,
+				tooltip : " (New Limb)",
+				action : ["action", ""],
+				recovery : "long rest",
+				spellcastingBonus : {
+					name : "New Limb (level 17)",
+					spells : ["regenerate"],
+					selection : ["regenerate"],
+					oncelr : true,
+			},
+		},
+		"new life" : { 
+			name : "New Life",
+			source : ["HB", 0],
+			minlevel : 20,
+			description : "\n   " + "At 20th level, once per week, you can bring a dead creature to life, as if casting true resurrection w/o material components.",
+		},
+			"true resurrection" : {
+				name : "True Resurrection",
+				minlevel : 20,
+				tooltip : " (New Life)",
+				action : ["action", ""],
+				spellcastingBonus : {
+					name : "New Life (level 20)",
+					spells : ["true resurrection"],
+					selection : ["true resurrection"],
+					oncelr : true,
+			},
+		},
+    	},
+};

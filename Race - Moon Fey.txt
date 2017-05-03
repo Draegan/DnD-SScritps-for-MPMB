@@ -1,0 +1,89 @@
+/*	-WHAT IS THIS?-
+	The script featured here is an explanation of how to make your own custom addition to MPMB's D&D 5e Character Tools.
+	You can add custom content to the Character Sheet's functionality by adding a script written with the syntax shown below in the "Add Custom Script" dialogue.
+	
+	-KEEP IN MIND-
+	Note that you can add as many custom codes as you want, but you have to add the code in at once (i.e. copy all the code into a single, long file and copy that into the sheet).
+	It is recommended to enter the code in a fresh sheet before adding any other information.
+*/
+
+/*	-INFORMATION-
+	Subject:	Ratmen
+	Effect:		This is the syntax for adding a new race to the sheet
+				Note that you will need to define the race once for every sub-race (i.e. there is a separate entry for High Elf, Wood Elf, and Dark Elf)
+				For races that have variants, like the human, you can define a variant using the RaceSubList. Any variant defined like that will only be selectable through the "Racial Options" button
+	Race Created by: anonymous at https://www.dandwiki.com/wiki/Moon_Fey_(5e_Race)
+
+	Sheet:		v12.97 (2017-05-02)
+*/
+
+RaceList["moon fey"] = { 
+
+	regExpSearch : /^(?=.*moon)(?=.*fey).*$/i,
+
+	name : "Moon Fey",
+
+	source : ["HB", 0],
+
+	plural : "Moon Fey", 
+
+	size : 3, 
+
+	speed : [30, 20], 
+
+	languages : ["Common", "Sylvan"], 
+
+	weapons : ["bite", "Breath weapon"], 
+
+	vision : "Darkvision 60 ft", 
+
+	dmgres : ["cold"], 
+
+	savetxt : "Adv. vs. being charmed; Magic can't put me to sleep", 
+
+	age : " reach adulthood in their late teens like humans and live around 700 years", 
+
+	height : " range from 5 to over 6 feet tall (4'9\" + 2d8\")", 
+	
+	weight : " weigh around 155 lb (110 + 2d8 \xD7 2d4 lb)", 
+	
+	heightMetric : " range from 1,5 to over 1,8 metres tall (145 + 5d8 cm)", 
+	
+	weightMetric : " weigh around 70 kg (50 + 5d8 \xD7 4d4 / 10 kg)", 
+
+	improvements : "Moon Fey: +1 Charisma, +2 Wisdom;", 
+	
+	scores : [0, 0, 0, 0, 2, 1], 
+	
+	trait : "Moon Fey (+1 Charisma, +2 Wisdom)\nTrance:\n  Fey don't need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. The Common word for such meditation is trance. While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep.", 
+	
+  
+	features : { 
+
+		"shapeshift" : { 
+		
+			name : "Shapeshift", 
+
+			minlevel : 1, 
+
+			recovery : "Short rest", 
+
+			action : ["action", ""],
+			
+			},
+        
+		"breath weapon" : {
+			name : "Breath Weapon",
+			minlevel : 1,
+			usages : 2,
+			additional : ["4d8"],  
+			recovery : "long rest",
+			tooltip : "",
+			
+			action : ["action", ""],
+    },   
+  }
+    
+ };
+
+UpdateDropdown("race");
